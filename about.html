@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Why Choose Us — Isha Global School</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── Shared helpers ── */
+    .section-tag{display:inline-block;background:var(--orange);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:50px;margin-bottom:.8rem;}
+    .section-tag.blue{background:var(--blue);}
+    .section-tag.yellow{background:var(--yellow);color:var(--blue);}
+    .section-tag.green{background:#2e7d32;}
+
+    /* ── Core-values wheel grid ── */
+    .cv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem;}
+    .cv-card{background:#fff;border-radius:var(--radius);padding:1.5rem 1.2rem;box-shadow:var(--shadow);text-align:center;transition:transform .2s;}
+    .cv-card:hover{transform:translateY(-4px);}
+    .cv-card .cv-icon{font-size:2.2rem;margin-bottom:.7rem;}
+    .cv-card h3{font-size:1rem;color:var(--blue);margin-bottom:.4rem;font-weight:700;}
+    .cv-card p{font-size:.82rem;color:#666;line-height:1.6;}
+    .cv-card.accent-orange{border-top:4px solid var(--orange);}
+    .cv-card.accent-blue  {border-top:4px solid var(--blue);}
+    .cv-card.accent-yellow{border-top:4px solid var(--yellow);}
+    .cv-card.accent-green {border-top:4px solid #2e7d32;}
+
+    /* ── Inspiration row ── */
+    .insp-row{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2rem;}
+    .insp-block{background:#fff;border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);}
+    .insp-block h3{color:var(--blue);font-size:1.2rem;font-weight:800;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:3px solid var(--orange);}
+    .step-row{display:flex;align-items:flex-start;gap:.8rem;margin-bottom:.8rem;}
+    .step-badge{min-width:2.2rem;height:2.2rem;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;}
+    .step-badge.obs{background:var(--orange);}
+    .step-badge.ask{background:#4caf50;}
+    .step-badge.ref{background:var(--blue);}
+    .step-row p{margin:0;font-size:.88rem;color:#555;line-height:1.6;padding-top:.3rem;}
+
+    /* ── Japanese method pills ── */
+    .jp-list{list-style:none;padding:0;margin:1rem 0 0;}
+    .jp-list li{display:flex;align-items:center;gap:.7rem;padding:.55rem 0;border-bottom:1px solid #f0f0f0;font-size:.88rem;color:#444;}
+    .jp-list li:last-child{border:0;}
+    .jp-num{min-width:1.8rem;height:1.8rem;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;}
+
+    /* ── IBL process arrow strip ── */
+    .ibl-flow{display:flex;align-items:stretch;gap:0;margin:2rem 0;border-radius:12px;overflow:hidden;}
+    .ibl-step{flex:1;padding:1rem .5rem;text-align:center;color:#fff;font-weight:700;font-size:.82rem;position:relative;}
+    .ibl-step::after{content:'';position:absolute;right:-14px;top:0;bottom:0;width:0;height:0;border-top:999px solid transparent;border-bottom:0 solid transparent;border-left:14px solid currentColor;z-index:1;}
+    .ibl-step:last-child::after{display:none;}
+    .ibl-ask   {background:#e8610a;color:#e8610a;}
+    .ibl-inv   {background:#9e9e9e;color:#9e9e9e;}
+    .ibl-cre   {background:#f5a623;color:#f5a623;}
+    .ibl-dis   {background:#4287f5;color:#4287f5;}
+    .ibl-ref   {background:#4caf50;color:#4caf50;}
+    .ibl-ask span,.ibl-inv span,.ibl-cre span,.ibl-dis span,.ibl-ref span{color:#fff;}
+
+    /* ── Fear comparison table ── */
+    .fear-compare{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+    .fear-no{background:#fff3f3;border:2px solid #e53935;border-radius:var(--radius);padding:1.5rem;}
+    .fear-yes{background:#f1f8f1;border:2px solid #4caf50;border-radius:var(--radius);padding:1.5rem;}
+    .fear-no h4{color:#e53935;margin-bottom:.8rem;font-size:1rem;}
+    .fear-yes h4{color:#2e7d32;margin-bottom:.8rem;font-size:1rem;}
+    .fear-no ul,.fear-yes ul{list-style:none;padding:0;margin:0;}
+    .fear-no li,.fear-yes li{font-size:.88rem;padding:.3rem 0;color:#444;}
+    .fear-no li::before{content:"✗ ";color:#e53935;font-weight:700;}
+    .fear-yes li::before{content:"✓ ";color:#4caf50;font-weight:700;}
+
+    /* ── Self-reliance steps ── */
+    .sr-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;}
+    .sr-step{background:#fff;border-radius:var(--radius);padding:1.4rem 1rem;text-align:center;box-shadow:var(--shadow);}
+    .sr-num{width:2.5rem;height:2.5rem;border-radius:8px;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;margin:0 auto .7rem;}
+    .sr-num.b2{background:var(--blue);}
+    .sr-num.b3{background:var(--yellow);color:var(--blue);}
+    .sr-num.b4{background:#4caf50;}
+    .sr-step h4{font-size:.92rem;color:var(--blue);margin-bottom:.3rem;}
+    .sr-step p{font-size:.78rem;color:#666;}
+
+    /* ── IPL photo grid ── */
+    .ipl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;}
+    .ipl-card{border-radius:12px;overflow:hidden;position:relative;background:var(--blue);}
+    .ipl-card img{width:100%;height:160px;object-fit:cover;display:block;opacity:.85;}
+    .ipl-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);color:#fff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;text-align:center;}
+
+    /* ── Physical growth strips ── */
+    .pg-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2rem;}
+    .pg-card{background:#fff;border-radius:var(--radius);padding:1.5rem 1rem;text-align:center;box-shadow:var(--shadow);border-bottom:4px solid var(--orange);}
+    .pg-card .pg-icon{font-size:2.4rem;margin-bottom:.7rem;}
+    .pg-card h4{font-size:.92rem;color:var(--blue);font-weight:700;}
+
+    /* ── Real life exposure ── */
+    .rle-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2rem;}
+    .rle-card{background:#fff;border-radius:var(--radius);padding:1.4rem .8rem;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;cursor:default;}
+    .rle-card::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .35s ease;border-radius:var(--radius);z-index:0;}
+    .rle-card:hover{transform:translateY(-10px) scale(1.04);box-shadow:0 16px 40px rgba(244,124,32,.25);}
+    .rle-card:hover::before{opacity:.08;}
+    .rle-card:hover .rle-icon{animation:rleBounce .5s ease;}
+    .rle-card:hover h4{color:var(--orange);}
+    .rle-icon{font-size:2rem;margin-bottom:.6rem;display:block;position:relative;z-index:1;transition:transform .3s ease;}
+    .rle-card h4{font-size:.82rem;color:var(--blue);font-weight:700;line-height:1.4;position:relative;z-index:1;transition:color .3s ease;}
+    @keyframes rleBounce{0%{transform:scale(1)}30%{transform:scale(1.35)}60%{transform:scale(.9)}100%{transform:scale(1)}}
+
+    /* ── Green campus grid ── */
+    .gc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
+    .gc-card{background:#fff;border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:1rem;}
+    .gc-icon{font-size:2rem;flex-shrink:0;}
+    .gc-card h4{font-size:.95rem;color:var(--blue);font-weight:700;margin-bottom:.3rem;}
+    .gc-card p{font-size:.82rem;color:#666;}
+
+    /* ── How we are different ── */
+    .hwd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+    .hwd-card{border-radius:var(--radius);padding:2rem;color:#fff;position:relative;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;cursor:default;}
+    .hwd-card::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .35s ease;z-index:0;}
+    .hwd-card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 18px 45px rgba(0,0,0,.3);}
+    .hwd-card:hover::before{background:rgba(255,255,255,.08);}
+    .hwd-card:hover .hwd-label{opacity:1;letter-spacing:.2em;}
+    .hwd-card:hover li{opacity:1;}
+    .hwd-card.who{background:var(--blue);}
+    .hwd-card.how{background:var(--orange);}
+    .hwd-card.what{background:#4caf50;}
+    .hwd-card .hwd-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-bottom:.3rem;position:relative;z-index:1;transition:opacity .3s ease,letter-spacing .35s ease;}
+    .hwd-card h3{font-size:1.15rem;font-weight:800;margin-bottom:.3rem;position:relative;z-index:1;}
+    .hwd-card .hwd-sub{font-size:.78rem;font-style:italic;opacity:.8;margin-bottom:1rem;position:relative;z-index:1;}
+    .hwd-card ul{list-style:none;padding:0;margin:0;position:relative;z-index:1;}
+    .hwd-card li{font-size:.85rem;padding:.3rem 0;opacity:.92;border-bottom:1px solid rgba(255,255,255,.15);transition:opacity .3s ease,transform .3s ease,padding-left .3s ease;}
+    .hwd-card:hover li{transform:translateX(6px);padding-left:6px;}
+    .hwd-card li:last-child{border:0;}
+    .hwd-card li::before{content:"→ ";font-weight:700;}
+
+    /* ── Quote pull ── */
+    .pull-quote{background:var(--cream);border-left:5px solid var(--orange);border-radius:0 var(--radius) var(--radius) 0;padding:1.5rem 2rem;margin:2rem 0;font-style:italic;color:#444;font-size:1rem;line-height:1.8;}
+    .pull-quote cite{display:block;margin-top:.6rem;font-size:.82rem;color:#888;font-style:normal;font-weight:600;}
+
+    /* ── Global responsibility ── */
+    .gr-cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;}
+    .gr-block{background:#fff;border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow);}
+    .gr-block h3{font-size:1rem;font-weight:800;color:#fff;background:var(--orange);border-radius:8px;padding:.4rem 1rem;margin-bottom:1rem;display:inline-block;}
+    .gr-block h3.blue-bg{background:var(--blue);}
+    .gr-block ul{list-style:none;padding:0;margin:0;}
+    .gr-block li{font-size:.88rem;color:#555;padding:.35rem 0;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:.6rem;}
+    .gr-block li:last-child{border:0;}
+    .gr-block li::before{content:"•";color:var(--orange);font-size:1.2rem;line-height:1;}
+
+    /* ── No competition quote strip ── */
+    .no-comp-strip{background:var(--blue);border-radius:var(--radius);padding:2.5rem 3rem;display:flex;align-items:center;gap:2.5rem;margin-top:2rem;}
+    .no-comp-strip .big-quote{font-size:5rem;color:var(--yellow);line-height:1;flex-shrink:0;}
+    .no-comp-strip blockquote{color:#fff;font-size:1.15rem;line-height:1.8;margin:0;font-style:italic;}
+    .no-comp-strip cite{display:block;margin-top:.8rem;font-size:.85rem;color:var(--yellow);font-style:normal;font-weight:700;}
+
+    /* ── Discipline chore stat ── */
+    .chore-stat{background:var(--cream);border-radius:var(--radius);padding:2rem;display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center;margin-top:1.5rem;}
+    .chore-stat .stat-icon{font-size:3.5rem;}
+    .chore-stat h4{color:var(--blue);font-size:1.05rem;font-weight:800;margin-bottom:.5rem;}
+    .chore-stat p{font-size:.88rem;color:#555;line-height:1.7;}
+
+    /* ── Self-discipline staircase labels ── */
+    .sd-steps{display:flex;gap:0;margin-top:1.5rem;align-items:flex-end;}
+    .sd-step{flex:1;border-radius:8px 8px 0 0;padding:.8rem .5rem;text-align:center;font-size:.78rem;font-weight:700;color:#fff;}
+
+    /* ── Core Value Cards — original simple style ── */
+    .cv-card{cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;}
+    .cv-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,.13);}
+
+    /* ── Core Value Popup Overlay ── */
+    .cv-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(5px);z-index:2000;align-items:center;justify-content:center;}
+    .cv-overlay.open{display:flex;}
+    .cv-popup{background:#fff;border-radius:20px;padding:2.5rem 2rem;max-width:520px;width:92%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.25);animation:cvSlideUp .4s cubic-bezier(.22,1,.36,1);max-height:85vh;overflow-y:auto;}
+    .cv-popup-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#999;transition:color .2s,transform .2s;}
+    .cv-popup-close:hover{color:#333;transform:scale(1.15);}
+    .cv-popup-icon{font-size:3rem;text-align:center;margin-bottom:.6rem;}
+    .cv-popup h3{text-align:center;color:var(--blue);font-size:1.25rem;font-weight:800;margin-bottom:1.2rem;}
+    .cv-popup-body p{font-size:.88rem;color:#555;line-height:1.8;margin-bottom:.7rem;}
+    .cv-popup-body h4{color:var(--orange);font-size:.92rem;font-weight:700;margin:1.2rem 0 .5rem;}
+    .cv-popup-body ul{list-style:none;padding:0;margin:0 0 .7rem;}
+    .cv-popup-body li{font-size:.86rem;color:#444;padding:.4rem 0;border-bottom:1px solid #f0f0f0;padding-left:1.4rem;position:relative;}
+    .cv-popup-body li:last-child{border-bottom:none;}
+    .cv-popup-body li::before{content:'✦';color:var(--orange);font-size:.65rem;position:absolute;left:0;top:.5rem;}
+
+    .cv-quote{background:var(--cream);border-left:4px solid var(--orange);border-radius:0 10px 10px 0;padding:.9rem 1.1rem;margin-bottom:1rem;font-size:.88rem;color:var(--blue);line-height:1.8;}
+
+    .cv-compare{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.8rem 0;}
+    .cv-no{background:#fff3f3;border:1px solid #e53935;border-radius:10px;padding:.8rem;}
+    .cv-yes{background:#f1f8f1;border:1px solid #4caf50;border-radius:10px;padding:.8rem;}
+    .cv-no h4{color:#e53935;font-size:.84rem;margin-bottom:.4rem;}
+    .cv-yes h4{color:#2e7d32;font-size:.84rem;margin-bottom:.4rem;}
+    .cv-no ul,.cv-yes ul{margin:0;padding:0;}
+    .cv-no li::before{content:"✗ ";color:#e53935;font-weight:700;position:static;padding-left:0;}
+    .cv-yes li::before{content:"✓ ";color:#4caf50;font-weight:700;position:static;padding-left:0;}
+    .cv-no li,.cv-yes li{padding-left:0;border:none;font-size:.82rem;padding:.25rem 0;}
+
+    .cv-staircase{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0 1rem;}
+    .cv-staircase span{color:#fff;font-size:.72rem;font-weight:700;padding:.35rem .75rem;border-radius:20px;}
+
+    @keyframes cvSlideUp{from{opacity:0;transform:translateY(40px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+    @media(max-width:768px){
+      .cv-grid{grid-template-columns:repeat(2,1fr);}
+      .insp-row{grid-template-columns:1fr;}
+      .fear-compare{grid-template-columns:1fr;}
+      .sr-steps{grid-template-columns:repeat(2,1fr);}
+      .ipl-grid{grid-template-columns:repeat(2,1fr);}
+      .pg-row{grid-template-columns:repeat(2,1fr);}
+      .rle-grid{grid-template-columns:repeat(2,1fr);}
+      .gc-grid{grid-template-columns:1fr;}
+      .hwd-grid{grid-template-columns:1fr;}
+      .gr-cols{grid-template-columns:1fr;}
+      .no-comp-strip{flex-direction:column;padding:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-banner">
+  🎓 Admissions Open &nbsp;<span>2026–2027</span>&nbsp; · &nbsp;📞 <span>9150720351</span>
+</div>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo">
+      <img src="Pictures/logo.jpg" alt="Isha Global School" class="logo-img"/>
+      <div class="logo-text"><div class="name">Isha Global School</div><div class="tagline">Inquiry · Freedom · Compassion</div></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="curriculum.html">Curriculum</a></li>
+      <li><a href="scholarship.html">Scholarship</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#" class="nav-apply">Apply Now →</a></li>
+    </ul>
+    <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <div class="mob-top">
+    <div class="logo"><img src="Pictures/logo.jpg" alt="Isha Global School" class="logo-img"/><div class="logo-text"><div class="name">Isha Global School</div></div></div>
+    <button class="mob-close" id="mobClose">✕</button>
+  </div>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="curriculum.html">Curriculum</a>
+  <a href="scholarship.html">Scholarship</a><a href="contact.html">Contact</a>
+  <a href="#" class="mob-apply">Apply Now →</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Why Choose Us?</span></div>
+    <h1>Why Choose <span style="color:var(--yellow)">Isha Global School?</span></h1>
+    <p>Raising Thinkers, Inquirers &amp; Communicators — free from fear, full of purpose</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 1 · OUR INSPIRATIONS
+════════════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Our Foundations</span>
+      <h2>Where Our <span class="script">Inspiration</span> Comes From</h2>
+      <p><strong>Isha</strong> — meaning <em>"Ruler / One who Protects"</em> — is the promise we make to every child</p>
+    </div>
+
+    <div class="insp-row">
+      <!-- JK method -->
+      <div class="insp-block">
+        <h3>J. Krishnamurti's Method of Teaching</h3>
+        <div class="pull-quote" style="margin-top:0;margin-bottom:1.2rem;font-size:.88rem;padding:1rem 1.4rem;">
+          "Don't limit a child to your own learning, for he was born in another time."
+          <cite>— Rabindranath Tagore</cite>
+        </div>
+        <div class="step-row">
+          <div class="step-badge obs">OBS</div>
+          <p><strong>Observation Walks</strong> — Children learn by observing the world directly, not from textbooks alone.</p>
+        </div>
+        <div class="step-row">
+          <div class="step-badge ask">ASK</div>
+          <p><strong>Why? Sessions</strong> — Open discussions where every question is welcomed and celebrated.</p>
+        </div>
+        <div class="step-row">
+          <div class="step-badge ref">REF</div>
+          <p><strong>Journaling</strong> — Putting thoughts into writing to develop clarity, reflection, and self-awareness.</p>
+        </div>
+        <div class="pull-quote" style="font-size:.88rem;padding:1rem 1.4rem;margin-bottom:0;">
+          "True education is to learn how to think — not what to think."
+          <cite>— J. Krishnamurti</cite>
+        </div>
+      </div>
+
+      <!-- Japanese method -->
+      <div class="insp-block">
+        <h3>Japanese Method of School Education</h3>
+        <p style="font-size:.85rem;color:#666;margin-bottom:.5rem;">A <strong>Holistic Approach</strong> spanning Academics, Character Building, and Life Skills</p>
+        <ul class="jp-list">
+          <li><span class="jp-num">1</span> Manners Before Knowledge — respect is the first lesson</li>
+          <li><span class="jp-num">2</span> Focus on Character Building alongside academics</li>
+          <li><span class="jp-num">3</span> Students clean their school — Teamwork &amp; Responsibility</li>
+          <li><span class="jp-num">4</span> No Exams till Age 10 — childhood is for curiosity, not competition</li>
+          <li><span class="jp-num">5</span> Respect and Empathy built from day one</li>
+          <li><span class="jp-num">6</span> Balanced &amp; Healthy Food — lunch with teachers, not alone</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 · CORE VALUES
+════════════════════════════════════════════ -->
+<section style="background:var(--cream);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag blue">Core Values</span>
+      <h2>Core Values of <span class="script">Isha Global School</span></h2>
+      <p>Eight pillars radiating from one centre — <strong>Holistic Development</strong></p>
+    </div>
+    <div class="cv-grid">
+      <div class="cv-card accent-orange" onclick="openCV(this)">
+        <div class="cv-icon">🔍</div>
+        <h3>Inquiry Based Learning</h3>
+        <p>Learning through exploration and questioning — not memorisation.</p>
+        <!-- hidden popup content -->
+        <div class="cv-hidden" hidden>
+          <div class="cv-quote"><em>"Everything must be questioned. Then the mind becomes extraordinarily sensitive, alive and intelligent."</em> — J. Krishnamurti</div>
+          <h4>The 5-Step IBL Process</h4>
+          <ul>
+            <li><strong>ASK</strong> — Children frame their own questions</li>
+            <li><strong>INVESTIGATE</strong> — Hands-on exploration &amp; research</li>
+            <li><strong>CREATE</strong> — Build models, projects &amp; ideas</li>
+            <li><strong>DISCUSS</strong> — Share findings with peers</li>
+            <li><strong>REFLECT</strong> — Journal &amp; self-assess their learning</li>
+          </ul>
+          <p>Student-centred, real-life ready, and focused on independent thinking — not memorising textbooks.</p>
+        </div>
+      </div>
+      <div class="cv-card accent-blue" onclick="openCV(this)">
+        <div class="cv-icon">🕊️</div>
+        <h3>Freedom from Fear</h3>
+        <p>No stress, no marks pressure — children learn best when they feel safe.</p>
+        <div class="cv-hidden" hidden>
+          <div class="cv-quote"><em>"To understand life is to understand ourselves, and that is both the beginning and the end of education."</em> — J. Krishnamurti</div>
+          <div class="cv-compare">
+            <div class="cv-no"><h4>Say NO to</h4><ul><li>Stress &amp; Anxiety</li><li>Fear of Failure</li><li>Marks Pressure</li><li>Suppressed opinions</li></ul></div>
+            <div class="cv-yes"><h4>Say YES to</h4><ul><li>Explore freely</li><li>Express views &amp; opinions</li><li>Learn from setbacks</li><li>Grow with confidence</li></ul></div>
+          </div>
+          <p>When fear goes down, the ability to express goes up.</p>
+        </div>
+      </div>
+      <div class="cv-card accent-yellow" onclick="openCV(this)">
+        <div class="cv-icon">🧭</div>
+        <h3>Discipline &amp; Self Reliance</h3>
+        <p>Time management, responsibility and independent functioning from an early age.</p>
+        <div class="cv-hidden" hidden>
+          <p>As per the <strong>American Academy of Child &amp; Adolescent Psychiatry</strong>, kids who do regular chores exhibit higher self-esteem and greater success.</p>
+          <h4>Self Discipline Staircase</h4>
+          <div class="cv-staircase">
+            <span style="background:var(--orange)">Time Mgmt</span>
+            <span style="background:#f5a623">Responsibilities</span>
+            <span style="background:#4caf50">Organisation</span>
+            <span style="background:var(--blue)">Study &amp; Play</span>
+            <span style="background:#1a237e">Independence</span>
+          </div>
+          <h4>How We Build It</h4>
+          <ul>
+            <li><strong>Structured Routine</strong> — Consistency builds confidence</li>
+            <li><strong>Clear Goals</strong> — Children set their own goals</li>
+            <li><strong>Learn from Setbacks</strong> — Failure is a lesson, not a label</li>
+            <li><strong>Continuous Learning</strong> — Curiosity at every stage</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cv-card accent-green" onclick="openCV(this)">
+        <div class="cv-icon">🤝</div>
+        <h3>Interactive &amp; Participative Learning</h3>
+        <p>Smart classrooms, UOLO-based curriculum, activities and parent engagement.</p>
+        <div class="cv-hidden" hidden>
+          <div class="cv-quote"><em>"You have to be your own teacher."</em> — J. Krishnamurti</div>
+          <ul>
+            <li><strong>Participative Learning</strong> — Every child is an active participant</li>
+            <li><strong>Smart Classrooms</strong> — Modern tech-enabled visual learning</li>
+            <li><strong>UOLO Integrated Curriculum</strong> — App-based, real-time connected</li>
+            <li><strong>Phonics &amp; Communication</strong> — Strong English from LKG</li>
+            <li><strong>Activities Based Learning</strong> — Hands-on crafts &amp; experiments</li>
+            <li><strong>Parents-Teachers' Meet</strong> — Parents as partners in growth</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cv-card accent-orange" onclick="openCV(this)">
+        <div class="cv-icon">🌸</div>
+        <h3>No Competition, No Comparison</h3>
+        <p>Each child grows at their own pace — no rankings, no comparisons, no anxiety.</p>
+        <div class="cv-hidden" hidden>
+          <div class="cv-quote"><em>"Real learning comes about when the competitive spirit has ceased. Each child is uniquely, irreplaceably themselves."</em> — J. Krishnamurti</div>
+          <ul>
+            <li><strong>No Rankings</strong> — Children are never ranked against each other</li>
+            <li><strong>Celebrate Every Child</strong> — Unique strengths are recognised</li>
+            <li><strong>Joy First</strong> — When comparison drops, happiness rises</li>
+          </ul>
+          <p>Every child is uniquely awesome — nobody can be you.</p>
+        </div>
+      </div>
+      <div class="cv-card accent-blue" onclick="openCV(this)">
+        <div class="cv-icon">🌍</div>
+        <h3>Global Responsibility</h3>
+        <p>Green campus, community engagement, ethics, patriotism and cultural pride.</p>
+        <div class="cv-hidden" hidden>
+          <h4>Community Engagement</h4>
+          <ul>
+            <li>Green Campus — learning to live with nature</li>
+            <li>Helping Others — compassion in action</li>
+            <li>Clean and Safe Environment</li>
+            <li>Honesty and Integrity — non-negotiable values</li>
+          </ul>
+          <h4>Embrace the Culture</h4>
+          <ul>
+            <li>Ethics and Family Values daily</li>
+            <li>Celebrate Festivals — Pooja, Diwali, Pongal &amp; more</li>
+            <li>Patriotism — Independence &amp; Republic Day</li>
+            <li>Green Day, Yellow Day, Bagless Day</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cv-card accent-yellow" onclick="openCV(this)">
+        <div class="cv-icon">💎</div>
+        <h3>Integrity</h3>
+        <p>Honesty, family values and ethics woven into everyday school life.</p>
+        <div class="cv-hidden" hidden>
+          <p>Integrity is not taught in a lesson — it is lived every day at IGS.</p>
+          <ul>
+            <li><strong>Honesty</strong> — Children learn to speak truth with courage</li>
+            <li><strong>Respect</strong> — Treating every person with dignity</li>
+            <li><strong>Family Values</strong> — Traditions, gratitude &amp; belonging</li>
+            <li><strong>Ethics</strong> — Doing the right thing even when no one is watching</li>
+          </ul>
+          <p>We believe a child with integrity grows into an adult the world can trust.</p>
+        </div>
+      </div>
+      <div class="cv-card accent-green" onclick="openCV(this)">
+        <div class="cv-icon">🏃</div>
+        <h3>Focus on Physical Growth</h3>
+        <p>Sports, yoga, healthy eating and daily play — a strong body supports a sharp mind.</p>
+        <div class="cv-hidden" hidden>
+          <p>A strong body powers a sharp, curious mind.</p>
+          <ul>
+            <li><strong>Regular Sports Activities</strong> — Football, running &amp; team games</li>
+            <li><strong>Healthy Food Focus</strong> — Balanced, nutritious meals supervised by staff</li>
+            <li><strong>Importance of Fitness</strong> — Daily physical activity for every child</li>
+            <li><strong>Yoga in Daily Life</strong> — Mindfulness, breathing &amp; inner well-being</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Value Popup Modal -->
+    <div class="cv-overlay" id="cvOverlay">
+      <div class="cv-popup">
+        <button class="cv-popup-close" id="cvClose">✕</button>
+        <div class="cv-popup-icon" id="cvIcon"></div>
+        <h3 id="cvTitle"></h3>
+        <div class="cv-popup-body" id="cvBody"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 3 · REAL LIFE EXPOSURE (was Section 9)
+════════════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Beyond the Classroom</span>
+      <h2>Real Life <span class="script">Exposure</span></h2>
+      <p>"To understand anything you must live with it, observe it, know all its content." — Krishnamurti</p>
+    </div>
+    <div class="rle-grid">
+      <div class="rle-card">
+        <div class="rle-icon">🎤</div>
+        <h4>Speeches by Entrepreneurs, Professionals &amp; Govt. Officials</h4>
+      </div>
+      <div class="rle-card">
+        <div class="rle-icon">🏦</div>
+        <h4>Exposure Visits — Financial, Cultural, Book Fair, Bakery &amp; Awareness Campaigns</h4>
+      </div>
+      <div class="rle-card">
+        <div class="rle-icon">🧹</div>
+        <h4>Demonstrations for Cleanliness &amp; Community Responsibility</h4>
+      </div>
+      <div class="rle-card">
+        <div class="rle-icon">🏛️</div>
+        <h4>UNESCO World Heritage Site Visits &amp; Cultural Immersion</h4>
+      </div>
+      <div class="rle-card">
+        <div class="rle-icon">🚨</div>
+        <h4>Disaster Management Preparedness &amp; Safety Awareness</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 10 · WHAT MAKES US GREAT
+════════════════════════════════════════════ -->
+<section style="background:var(--cream);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">The IGS Difference</span>
+      <h2>What Makes Us <span class="script">Great</span></h2>
+      <p>The answer that parents deserve before they choose their child's school</p>
+    </div>
+    <div class="hwd-grid">
+      <div class="hwd-card who">
+        <div class="hwd-label">Who We Are</div>
+        <h3>Non-Profitable &amp; Highly Integral Team</h3>
+        <div class="hwd-sub">A mission-driven organisation, not a business</div>
+        <ul>
+          <li>JK Educational Philosophies with Modern Touch (UOLO)</li>
+          <li>Positives of Japanese School Education System</li>
+          <li>Registered Non-Profit Organisation</li>
+          <li>Raise Strong and Confident Kids</li>
+        </ul>
+      </div>
+      <div class="hwd-card how">
+        <div class="hwd-label">How We Do It</div>
+        <h3>With 100% Commitment &amp; Dedication</h3>
+        <div class="hwd-sub">Every teacher, every day, every child</div>
+        <ul>
+          <li>Inquiry Based Learning</li>
+          <li>Character building alongside academics</li>
+          <li>Freedom from Fear</li>
+          <li>Discipline and Self Reliance</li>
+          <li>UOLO — Interactive &amp; Participative Learning</li>
+          <li>International school exposures &amp; lectures</li>
+        </ul>
+      </div>
+      <div class="hwd-card what">
+        <div class="hwd-label">What We Deliver</div>
+        <h3>Education and Beyond</h3>
+        <div class="hwd-sub">Not just marks — a whole human being</div>
+        <ul>
+          <li>Holistic Growth of Kids</li>
+          <li>No to "FEAR" — ever</li>
+          <li>Creative Thinkers &amp; Confident Communicators</li>
+          <li>Inquirers who are knowledgeable &amp; principled</li>
+          <li>Global Citizens with local roots</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 13 · ARUMBU TRUST
+════════════════════════════════════════════ -->
+<section style="background:var(--blue);">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
+    <div>
+      <h2 style="color:var(--yellow);font-size:2rem;font-weight:800;margin-bottom:1rem;">Arumbu Educational Trust</h2>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1rem;line-height:1.9;">
+        Isha Global School is managed by <strong>Arumbu Educational Trust</strong> — a non-profit organisation dedicated to quality foundational education for every child, regardless of background.
+      </p>
+      <p style="color:rgba(255,255,255,.85);margin-bottom:1.5rem;line-height:1.9;">
+        Our principle: <strong style="color:var(--yellow);">financial circumstances should never be a barrier to learning.</strong> Through the <em>Little Stars Scholarship Programme</em>, no deserving child is ever turned away.
+      </p>
+      <a href="scholarship.html" class="btn btn-yellow">Little Stars Scholarship →</a>
+    </div>
+    <div style="text-align:center;">
+      <img src="Pictures/trust.jpeg" alt="Arumbu Educational Trust Logo" style="width:220px;height:220px;border-radius:50%;object-fit:cover;margin:0 auto 1rem;display:block;border:4px solid var(--yellow);box-shadow:0 8px 30px rgba(0,0,0,.3);"/>
+      <h3 style="color:var(--yellow);margin-bottom:.5rem;">Non-Profit · Transparent · Community-Led</h3>
+      <p style="color:rgba(255,255,255,.75);font-size:.88rem;">Every rupee goes directly to a child's education</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="text-align:center;">
+  <div class="wrap">
+    <h2 style="font-size:2.2rem;font-weight:800;color:var(--blue);margin-bottom:1rem;">
+      Ready to give your child<br/><span class="script" style="color:var(--orange);">Education and Beyond?</span>
+    </h2>
+    <p style="color:#666;margin-bottom:2rem;max-width:520px;margin-left:auto;margin-right:auto;">
+      Join the growing IGS family — where learning is a joy, fear has no place, and every child is celebrated.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="#" class="btn btn-orange">Apply Now →</a>
+      <a href="contact.html" class="btn btn-outline" style="color:var(--blue);border-color:var(--blue);">Contact Us</a>
+      <a href="scholarship.html" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);">Scholarship Info</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <div class="f-name">Isha Global School</div>
+        <div class="f-motto">Inquiry · Freedom · Compassion</div>
+        <p>Nurturing young minds at Kadampuliyur. Managed by Arumbu Educational Trust.</p>
+      </div>
+      <div><h4>Quick Links</h4><ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+        <li><a href="curriculum.html">Curriculum</a></li><li><a href="scholarship.html">Scholarship</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Reach Us</h4><ul>
+        <li><a href="tel:9150720351">📞 9150720351</a></li>
+        <li><a href="mailto:Ishaglobalschool@gmail.com">✉️ Ishaglobalschool@gmail.com</a></li>
+        <li>📍 Kadampuliyur</li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Isha Global School · Arumbu Educational Trust</span><span>Made with ❤️ for every child</span></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Core Value popup
+  var overlay = document.getElementById('cvOverlay');
+  var closeBtn = document.getElementById('cvClose');
+
+  function openCV(card) {
+    var hidden = card.querySelector('.cv-hidden');
+    if (!hidden) return;
+    document.getElementById('cvIcon').textContent = card.querySelector('.cv-icon').textContent;
+    document.getElementById('cvTitle').textContent = card.querySelector('h3').textContent;
+    document.getElementById('cvBody').innerHTML = hidden.innerHTML;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCV() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  closeBtn.addEventListener('click', closeCV);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeCV(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCV(); });
+</script>
+</body>
+</html>
