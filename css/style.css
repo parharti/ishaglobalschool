@@ -356,6 +356,8 @@ nav {
 /* ── FOOTER ── */
 footer { background:#0a1638; color:rgba(255,255,255,.7); padding:3rem 0 1.5rem; }
 .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:1.5rem; }
+.f-logos { display:flex; gap:12px; margin-bottom:1rem; }
+.f-logo { width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid var(--orange); }
 .f-brand .f-name { font-size:1.2rem; font-weight:800; color:var(--orange); margin-bottom:.2rem; }
 .f-brand .f-motto { color:var(--yellow); font-size:.72rem; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1rem; }
 .f-brand p { font-size:.84rem; line-height:1.8; }
