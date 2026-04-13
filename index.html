@@ -372,7 +372,31 @@
   </div>
 </footer>
 
+<!-- Event image popup -->
+<div class="ev-img-popup" id="evImgPopup">
+  <img id="evImgFull" src="" alt=""/>
+</div>
+
 <script>
+  // Event image popup
+  document.querySelectorAll('.ev-img-wrap').forEach(function(wrap) {
+    wrap.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var img = wrap.querySelector('.ev-img');
+      document.getElementById('evImgFull').src = img.src;
+      document.getElementById('evImgFull').alt = img.alt;
+      document.getElementById('evImgPopup').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.getElementById('evImgPopup').addEventListener('click', function() {
+    this.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { document.getElementById('evImgPopup').classList.remove('open'); document.body.style.overflow = ''; }
+  });
+
   // Mobile nav
   const ham = document.getElementById('ham');
   const mobNav = document.getElementById('mobNav');

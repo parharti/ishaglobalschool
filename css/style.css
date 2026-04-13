@@ -170,9 +170,17 @@ nav {
   cursor:pointer; position:relative; overflow:hidden;
 }
 .event-card:hover { transform:translateY(-10px) scale(1.02); box-shadow:0 18px 45px rgba(0,0,0,.18); }
-.ev-img-wrap { position:relative; overflow:hidden; height:180px; }
+.ev-img-wrap { position:relative; overflow:hidden; height:180px; cursor:pointer; }
 .ev-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .45s ease; }
 .event-card:hover .ev-img { transform:scale(1.1); }
+
+/* Event image full popup on hover */
+.ev-img-wrap::after { content:'Click to view'; position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,.6); color:#fff; font-size:.68rem; font-weight:600; padding:4px 10px; border-radius:12px; opacity:0; transition:opacity .3s ease; pointer-events:none; }
+.ev-img-wrap:hover::after { opacity:1; }
+.ev-img-popup { display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); z-index:3000; align-items:center; justify-content:center; cursor:zoom-out; backdrop-filter:blur(6px); }
+.ev-img-popup.open { display:flex; }
+.ev-img-popup img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.5); animation:evPopIn .3s ease; }
+@keyframes evPopIn { from{opacity:0;transform:scale(.8)} to{opacity:1;transform:scale(1)} }
 .ev-body { padding:18px 20px 20px; }
 .ev-name { font-size:1.05rem; font-weight:700; color:var(--blue); margin-bottom:6px; line-height:1.3; transition:color .3s ease; }
 .event-card:hover .ev-name { color:var(--orange); }
